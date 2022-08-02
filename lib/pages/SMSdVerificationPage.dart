@@ -125,10 +125,7 @@ class _ForgotPasswordVerificationPageState extends State<SMSdVerificationPage> {
                                   if (otpVisibility) {
                                     verifyOTP();
                                     //
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => HomePage()));
+                                    
                                   } else {
                                     loginWithPhone();
                                   }
@@ -173,6 +170,10 @@ class _ForgotPasswordVerificationPageState extends State<SMSdVerificationPage> {
         verificationId: verificationID, smsCode: otpController.text);
 
     await auth.signInWithCredential(credential).then((value) {
+      Navigator.pushReplacement(
+         context,
+         MaterialPageRoute(
+         builder: (context) => HomePage()));
       print("You are logged in successfully");
       Fluttertoast.showToast(
           msg: "You are logged in successfully",
